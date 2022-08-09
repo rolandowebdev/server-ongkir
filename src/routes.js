@@ -4,7 +4,7 @@ const router = express.Router();
 
 const request = init(process.env.API_KEY, 'starter');
 
-router.get('/provinsi', (req, res) => {
+router.get('/province', (req, res) => {
   const province = request.get('/province');
   province.then((prov) => {
     const js = JSON.parse(prov);
@@ -12,15 +12,15 @@ router.get('/provinsi', (req, res) => {
   });
 });
 
-router.get('/kota/:id', (req, res) => {
+router.get('/city/:id', (req, res) => {
   const allCityInProvince = request.get(`/city?&province=${req.params.id}`);
   allCityInProvince.then((city) => {
-    const citi = JSON.parse(city);
-    res.send(citi);
+    const data = JSON.parse(city);
+    res.send(data);
   });
 });
 
-router.post('/ongkir', (req, res) => {
+router.post('/cost', (req, res) => {
   const form = req.body;
   const data = {
     origin: form.origin,
