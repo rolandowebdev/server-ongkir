@@ -3,7 +3,7 @@ const { init } = require('rajaongkir-node-js');
 const express = require('express');
 const router = express.Router();
 
-const request = init('1318ee5c9696bf6e44f28baba2846ea0', 'starter');
+const request = init(process.env.API_KEY, 'starter');
 
 router.get('/provinsi', (req, res) => {
   const province = request.get('/province');
