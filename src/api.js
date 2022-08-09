@@ -4,7 +4,6 @@ const cors = require('cors');
 const express = require('express');
 
 const app = express();
-
 const dataRouter = require('./routes'); // routes for rajaongkir api
 
 app.use(bodyParser.json());
