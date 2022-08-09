@@ -9,10 +9,8 @@ Like this : `npm install`
 Like this : `npm install netlify-cli -g`
 
 ### Then add your rajaongkir api key
-<ol>
-  <li>`create .env file`</li>
-  <li>`and add your rajaongkir api key`</li>
-</ol>
+1. `create .env file`
+2. `and add your rajaongkir api key`
 
 ### Last steps you can run project using netlify-cli
 Like this : `netlify dev`
