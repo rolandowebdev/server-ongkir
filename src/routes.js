@@ -2,10 +2,10 @@ const { init } = require('rajaongkir-node-js');
 const express = require('express');
 const router = express.Router();
 
-const request = init(process.env.API_KEY, 'starter');
+const requestApi = init(process.env.API_KEY, 'starter');
 
 router.get('/province', (req, res) => {
-  const province = request.get('/province');
+  const province = requestApi.get('/province');
   province.then((prov) => {
     const js = JSON.parse(prov);
     res.send(js);
@@ -13,22 +13,22 @@ router.get('/province', (req, res) => {
 });
 
 router.get('/city/:id', (req, res) => {
-  const allCityInProvince = request.get(`/city?&province=${req.params.id}`);
-  allCityInProvince.then((city) => {
+  const allCity = requestApi.get(`/city?&province=${req.params.id}`);
+  allCity.then((city) => {
     const data = JSON.parse(city);
     res.send(data);
   });
 });
 
-router.post('/cost', (req, res) => {
+router.post('/cost', function (req, res) {
   const form = req.body;
   const data = {
     origin: form.origin,
     destination: form.destination,
     weight: form.weight,
-    courier: form.courier, // can request other courier
+    courier: form.courier,
   };
-  const cost = request.post('cost', data);
+  const cost = requestApi.post('cost', data);
   cost.then((cst) => {
     res.send(cst);
   });
